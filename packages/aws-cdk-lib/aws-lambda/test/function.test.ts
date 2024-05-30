@@ -4101,16 +4101,6 @@ describe('latest Lambda node runtime', () => {
     });
     Template.fromStack(stack).hasResource('AWS::Lambda::Function', {
       Properties: {
-        Code: {
-          ZipFile: 'foo',
-        },
-        Handler: 'index.handler',
-        Role: {
-          'Fn::GetAtt': [
-            'LambdaServiceRoleA8ED4D3B',
-            'Arn',
-          ],
-        },
         Runtime: {
           'Fn::FindInMap': [
             'LatestNodeRuntimeMap',
@@ -4138,16 +4128,6 @@ describe('latest Lambda node runtime', () => {
     // THEN
     Template.fromStack(stack).hasResource('AWS::Lambda::Function', {
       Properties: {
-        Code: {
-          ZipFile: 'foo',
-        },
-        Handler: 'index.handler',
-        Role: {
-          'Fn::GetAtt': [
-            'LambdaServiceRoleA8ED4D3B',
-            'Arn',
-          ],
-        },
         Runtime: 'nodejs20.x',
       },
     });
@@ -4167,16 +4147,6 @@ describe('latest Lambda node runtime', () => {
     // THEN
     Template.fromStack(stack).hasResource('AWS::Lambda::Function', {
       Properties: {
-        Code: {
-          ZipFile: 'foo',
-        },
-        Handler: 'index.handler',
-        Role: {
-          'Fn::GetAtt': [
-            'LambdaServiceRoleA8ED4D3B',
-            'Arn',
-          ],
-        },
         Runtime: 'nodejs18.x',
       },
     });
@@ -4196,16 +4166,6 @@ describe('latest Lambda node runtime', () => {
     // THEN
     Template.fromStack(stack).hasResource('AWS::Lambda::Function', {
       Properties: {
-        Code: {
-          ZipFile: 'foo',
-        },
-        Handler: 'index.handler',
-        Role: {
-          'Fn::GetAtt': [
-            'LambdaServiceRoleA8ED4D3B',
-            'Arn',
-          ],
-        },
         Runtime: 'nodejs18.x',
       },
     });

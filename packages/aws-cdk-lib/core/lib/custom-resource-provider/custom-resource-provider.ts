@@ -3,6 +3,7 @@ import { CustomResourceProviderBase } from './custom-resource-provider-base';
 import { CustomResourceProviderOptions } from './shared';
 import { FactName } from '../../../region-info';
 import { Stack } from '../stack';
+import { Token } from '../token';
 
 /**
  * Initialization properties for `CustomResourceProvider`.
@@ -128,6 +129,10 @@ export class CustomResourceProvider extends CustomResourceProviderBase {
 }
 
 function customResourceProviderRuntimeToString(x: CustomResourceProviderRuntime): string {
+  if (Token.isUnresolved(x)) {
+    return x;
+  }
+
   switch (x) {
     case CustomResourceProviderRuntime.NODEJS_12:
     case CustomResourceProviderRuntime.NODEJS_12_X:

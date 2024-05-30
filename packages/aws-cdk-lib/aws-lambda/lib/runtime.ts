@@ -381,5 +381,7 @@ export function determineLatestNodeRuntime(scope: Construct): Runtime {
   // Runtime regional fact should always return a known runtime string that Runtime can index off, but for type
   // safety we also default it here.
   const runtimeName = Stack.of(scope).regionalFact(FactName.LATEST_NODE_RUNTIME, Runtime.NODEJS_18_X.name);
-  return new Runtime(runtimeName, RuntimeFamily.NODEJS, { supportsInlineCode: true });
+  return runtimeName
+    ? new Runtime(runtimeName, RuntimeFamily.NODEJS, { supportsInlineCode: true })
+    : Runtime.NODEJS_18_X;
 }
